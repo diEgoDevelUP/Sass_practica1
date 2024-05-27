@@ -1,0 +1,139 @@
+$color-fondo: #f0f0f0; 
+$color-boton: #007bff; 
+$color-destacado: #ffeb3b;
+$colorInicio: #333333;
+$colorFin: #555555;
+$tamano-letra-primario: 20px;
+$color-letra: white; 
+$es-temporada-invierno: true; 
+
+@mixin degradado-lineal {
+  background: radial-gradient(at center, $colorInicio, $colorFin);
+}
+
+@mixin border {
+  border-radius: 25px;
+}
+
+body {
+  background-color: $color-fondo;
+  font-family: sans-serif;
+}
+
+header {
+  background-color: $color-destacado;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.producto {
+  width: 25%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.producto h3 {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.producto p {
+  margin-bottom: 10px;
+}
+
+.boton-comprar {
+  background-color: $color-boton;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton-comprar:hover {
+  background-color: darken($color-boton, 10%);
+}
+
+.informacion {
+  margin-top: 40px;
+}
+
+footer {
+  background-color: $color-fondo;
+  text-align: center;
+  padding: 20px;
+}
+
+
+@if $es-temporada-invierno {
+  .producto {
+    border: 2px solid #ccc; 
+  }
+
+  .producto h3 {
+    color: $color-destacado; 
+  }
+
+  .boton-comprar {
+    background-color: $color-destacado; 
+  }
+}
+
+
+@else {
+  .producto {
+    border: none; 
+  }
+
+  .producto h3 {
+    color: #333; 
+  }
+
+  .boton-comprar {
+    background-color: $color-boton;
+  }
+}
+
+nav {
+  @include degradado-lineal;
+  @include border;
+  margin: 50px;
+
+  ul {
+      display: flex;
+      justify-content: space-between;
+      height: 50px;
+      list-style: none;
+
+      a {
+          text-decoration: none;
+
+          li {
+              align-items: center;
+              font-size: $tamano-letra-primario;
+              padding: 10px;
+              color: $color-letra;
+          }
+      }
+  }
+}

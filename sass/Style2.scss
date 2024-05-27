@@ -1,0 +1,48 @@
+$color: #007bff; // Color azul para los botones
+$border-color: #1e88e5;
+$border-width: 2px;
+$color-fondo: bisque;
+
+body {
+  background-color: $color-fondo;
+}
+
+@function generar-estilos-button($color) {
+  @return (
+    background-color: $color,
+    border: $border-width solid $border-color,
+    padding: 10px 20px,
+    border-radius: 5px,
+    cursor: pointer,
+    transition: background-color 0.3s ease,
+    color: white
+  );
+}
+
+@mixin button-styles($color) {
+  @include generar-estilos-button($color);
+
+  &:hover {
+    background-color: lighten($color, 10%);
+  }
+}
+
+button {
+  margin-top: 20px;
+  background-color: $color;
+  margin-left: 200px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 20px;
+
+  img {
+    width: 50%;
+    height: 50vh;
+  }
+}

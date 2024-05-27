@@ -1,0 +1,128 @@
+$color-fondo: #f0f0f0; 
+$color-boton: #007bff; 
+$color-destacado: #ffeb3b;
+$colorInicio: #333333;
+$colorFin: #555555;
+$tamano-letra-primario: 20px;
+$color-letra: white; 
+$es-temporada-invierno: true; 
+
+@mixin degradado-lineal {
+  background: radial-gradient(at center, $colorInicio, $colorFin);
+}
+
+@mixin border {
+  border-radius: 25px;
+}
+
+$equipos: (
+  ("Golden State Warriors", "#00783C"),
+  ("Los Angeles Lakers", "#F05929"),
+  ("Boston Celtics", "#0088C5"),
+  ("Chicago Bulls", "#FF9D36"),
+  ("Miami Heat", "#C8102E")
+); // Lista de equipos y sus colores
+
+$jugadores: (
+  ("Stephen Curry", "Golden State Warriors", "Base"),
+  ("LeBron James", "Los Angeles Lakers", "Alero"),
+  ("Jayson Tatum", "Boston Celtics", "Alero"),
+  ("DeMar DeRozan", "Chicago Bulls", "Escolta"),
+  ("Jimmy Butler", "Miami Heat", "Alero")
+); // Lista de jugadores, equipos y posiciones
+
+body {
+  background-color: #f0f0f0;
+  font-family: sans-serif;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.equipos {
+  margin-bottom: 40px;
+}
+
+.lista-equipos {
+  list-style: none;
+  padding: 0;
+}
+
+@each $equipo, $color in $equipos {
+  .lista-equipos {
+    @append-content (
+      <li>
+        <a href='#' style='background-color: #{$color}; color: white; padding: 10px 20px; text-decoration: none;'>#{$equipo}</a>
+      </li>
+    );
+  }
+}
+
+.jugadores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.jugador {
+  width: 30%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.jugador img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.jugador h3 {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.jugador p {
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+nav {
+    @include degradado-lineal;
+    @include border;
+    margin: 50px;
+  
+    ul {
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+        list-style: none;
+  
+        a {
+            text-decoration: none;
+  
+            li {
+                align-items: center;
+                font-size: $tamano-letra-primario;
+                padding: 10px;
+                color: $color-letra;
+            }
+        }
+    }
+  }
